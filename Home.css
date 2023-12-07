@@ -139,3 +139,112 @@ body {
     color: rgb(68,68,132);
     margin: 0px 0px 0px 40px;
 }
+footer{
+    align-items: center;
+    padding: 15px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 1;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.copyright{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+
+}
+.icons{
+    float: left;
+}
+
+
+@media only screen and (max-width: 576px){
+    nav ul li {
+        margin-left: 10px;
+    }
+    
+    .permbajtja h1 {
+        font-size: 30px;
+        padding-top: 10%;
+    }
+
+    .section2 svg:first-child {
+        left: 5px;
+
+    }
+
+    .section2 svg:last-child {
+        right: 10px;
+
+    }
+
+    .image {
+        width: 100%;
+        height: auto;
+        margin: 10px 0;
+        padding: 10px;
+
+    }
+    .txt1,
+    .txt2 {
+        letter-spacing: 20px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .section2 svg:first-child {
+        left: 20px;
+
+    }
+
+    .section2 svg:last-child {
+        right: 40px;
+
+    }
+}
+
+
+@media only screen and (max-width: 480px){
+    nav ul li {
+        margin-left: 5px;
+    }
+    
+    .permbajtja h1 {
+        font-size: 25px;
+        padding-top: 7%;
+    }
+    
+    .permbajtja a {
+        padding: 6px 12px;
+        font: 12px;
+
+    }
+
+    .section2 svg:first-child {
+        left: 3px;
+
+    }
+
+    .section2 svg:last-child {
+        right: 5px;
+
+    }
+
+    .image {
+        width: 100%;
+        height: auto;
+        margin: 5px 0;
+        padding: 7px;
+
+    }
+    .txt1,
+    .txt2 {
+        letter-spacing: 15px;
+    }
+}
