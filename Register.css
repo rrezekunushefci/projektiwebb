@@ -130,3 +130,89 @@ input::placeholder{
     color: #8a2be2;
     text-decoration: none;
 }
+
+#result {
+    color: rgb(255, 254, 254);
+    font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    top: 25px;
+}
+
+.popup {
+    width: 90%;
+    max-width: 400px;
+    background: linear-gradient(to right, #3498db, #2c3e50);
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.4s, top 0.4s;
+    visibility: hidden;
+    text-align: center;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    z-index: 999;
+}
+
+.popup ion-icon {
+    color: greenyellow;
+    font-size: 50px;
+}
+
+.popup p {
+    margin: 10px 0;
+}
+
+.popup button {
+    width: 100%;
+    background: blueviolet;
+    padding: 12px 0;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.popup a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 650;
+    letter-spacing: 2px;
+}
+
+.open-slide {
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    visibility: visible;
+}
+footer {
+    align-items: center;
+    padding: 15px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 1;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.copyright {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.icons {
+    float: left;
+}
