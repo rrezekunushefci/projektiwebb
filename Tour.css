@@ -106,3 +106,30 @@ nav ul li a:hover {
     color: white;
     border-radius: 5px;
 }
+footer{
+
+    align-items: center;
+    font-weight: bold;
+    bottom:1px;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 12px;    
+    
+    }
+    
+    
+    .copyright{ 
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    
+    
+    }
+    .icons{
+        float: left;
+        
+    }
