@@ -217,3 +217,33 @@ footer {
 .icons {
     float: left;
 }
+
+@media screen and (max-width: 768px) {
+    .content-container {
+        width: 100%;
+    }
+
+    nav {
+        padding: 20px 5%;
+    }
+
+    nav ul li {
+        margin-left: 20px;
+    }
+
+    form, .kontakti {
+        width: 100%;
+        max-width: none;
+    }
+}
+
+/* Medium-sized screens */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    nav {
+        padding: 20px 8%;
+    }
+
+    nav ul li {
+        margin-left: 40px;
+    }
+}
