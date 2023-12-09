@@ -1,17 +1,18 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Times New Roman', Times, serif;
 }
 
-body{
+body {
     min-height: 95vh;
     background: linear-gradient(to right, #3498db, #2c3e50);
     background-position: center;
     width: 100%;
     min-height: 100vh;
 }
+
 nav{
     width: 100%;
     position: absolute;
@@ -29,106 +30,109 @@ nav .logo{
 nav ul li{
     list-style: none;
     display: inline-block;
-    margin-left: 80px;
+    margin-left: 62px;
+    
+      
 }
 nav ul li a{
     text-decoration: none;
-    color: #ffffff;
+    color: #fff;
     font-size: 17px;
-    
 }
 nav ul li a:hover {
-  color: blueviolet; 
+    color: blueviolet;
 }
-.permbajtja{
+
+.permbajtja {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    margin-top: 5%; 
 }
-.forma{
-    position: relative;
-    width: 90%;
-    max-width: 400px;
-    height: auto;
+
+.forma {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 420px;
     background: transparent;
     border: 1px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(40px);
+    box-shadow: 0 0 30px rgba(255, 255, 255, .2);
     color: #fff;
     padding: 40px;
     border-radius: 15px;
 }
-.forma h2{
+
+.forma h2 {
     color: #fff;
     text-align: center;
-    font-size: 32px;
+    font-size: 28px;
+    margin-bottom: 20px; 
 }
+
 .forma .inputet {
     position: relative;
-    margin: 15px 0;
-    width: 100%;
+    margin: 20px 0;
+    width: 280px;
     border-bottom: 2px solid #fff;
 }
 
-
-.forma .inputet input{
+.forma .inputet input {
     width: 100%;
-    height: 45px;
+    height: 40px;
     background: transparent;
     border: none;
     outline: none;
-    padding: 0 20px 0 5px;
+    padding: 0 15px 0 5px;
     color: #fff;
     font-size: 16px;
 }
 
-i{
+i {
     position: absolute;
     color: #fff;
-    top: 13px;
+    top: 10px;
     right: 0;
 }
 
-input::placeholder{
+input::placeholder {
     color: #fff;
 }
 
-.butoni{
+.butoni {
     color: #fff;
     background: blueviolet;
     width: 100%;
-    height: 50px;
+    height: 45px;
     border-radius: 5px;
     outline: none;
     border: none;
-    font-size: 17px;
+    font-size: 16px;
     cursor: pointer;
-    box-shadow: 3px 0 10px rgba(0, 0, 0, .5);
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.5);
 }
 
-.grupi{
+.grupi {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    padding: 5%;
+    padding: 3%;
 }
 
-.teksti-linkut{
-    margin-bottom: 10px;
+.teksti-linkut {
+    margin-left: 11%;
     color: #fff;
 }
 
-.linku{
-    color: #6a1a9a;
+.linku {
+    color: #6a1a9a; 
     text-decoration: underline;
-    font-weight: bold;
+    font-weight: bold; 
 }
-.linku:hover{
-    color: #8a2be2;
+.linku:hover {
+    color: #8a2be2; 
     text-decoration: none;
 }
 
@@ -137,83 +141,33 @@ input::placeholder{
     font-weight: 600;
     font-family: 'Times New Roman', Times, serif;
     position: relative;
-    top: 25px;
+    top: 20px;
 }
+footer{
 
-.popup {
-    width: 90%;
-    max-width: 400px;
-    background: linear-gradient(to right, #3498db, #2c3e50);
-    border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(0);
-    transition: transform 0.4s, top 0.4s;
-    visibility: hidden;
-    text-align: center;
-    padding: 30px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(8px);
-    color: #fff;
-    z-index: 999;
-}
-
-.popup ion-icon {
-    color: greenyellow;
-    font-size: 50px;
-}
-
-.popup p {
-    margin: 10px 0;
-}
-
-.popup button {
-    width: 100%;
-    background: blueviolet;
-    padding: 12px 0;
-    margin-top: 20px;
-    border: none;
-    outline: none;
-    font-size: 18px;
-    color: #fff;
-    border-radius: 6px;
-    cursor: pointer;
-    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
-}
-
-.popup a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: 650;
-    letter-spacing: 2px;
-}
-
-.open-slide {
-    top: 50%;
-    transform: translate(-50%, -50%) scale(1);
-    visibility: visible;
-}
-footer {
     align-items: center;
     padding: 15px;
     font-weight: bold;
     position: absolute;
-    bottom: 1;
+    bottom:1;
     left: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.3);
     color: white;
     text-align: center;
+
     box-sizing: border-box;
 }
-
-.copyright {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-}
-
-.icons {
-    float: left;
-}
+    
+    
+    .copyright{ 
+        justify-content: center;
+        align-items: center;
+        display: flex;
+    
+    
+    }
+    .icons{
+        float: left;
+        
+    }
