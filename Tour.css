@@ -38,31 +38,23 @@ nav ul li a:hover {
 }
   
 .main-txt h1{
-    
-    text-align: left;
-    margin-top: 10%;
-    margin-left: 4%;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 30px;
-    font-style: oblique;
-    background: linear-gradient(to right, #3498db, #9a3030);
-    background-clip: text;
-    color: #fff;
-    padding: 10px;
-    border-radius: 10px; 
-    display: inline-block;
-    border-image: linear-gradient(to right, #3498db, #2fb063);
-    border-image-slice: 1;
-    box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
-    
-  
 
-    
-   
-   
-}
-
-
+        text-align: left;
+        margin-top: 10%;
+        margin-left: 4%;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 30px;
+        font-style: oblique;
+        background: linear-gradient(to right, #3498db, #9a3030);
+        background-clip: text;
+        color: transparent;
+        padding: 10px;
+        border-radius: 10px; 
+        display: inline-block;
+        border-image: linear-gradient(to right, #3498db, #2fb063);
+        border-image-slice: 1;
+        box-shadow: 0 0 8px rgba(52, 152, 219, 0.5);
+    }
 .packages .card{
     border-radius: 5px;
     border: none;
