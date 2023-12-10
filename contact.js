@@ -26,7 +26,7 @@ function contactFormValidation() {
         return false;
     }
 
-
+    
     alert('Forma u dërgua me sukses!');
     return true;
 }
