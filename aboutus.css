@@ -134,3 +134,64 @@ footer{
     .icons{
         float: left;
     }
+
+    @media screen and (max-width: 768px) {
+        nav {
+            padding: 20px 5%;
+        }
+    
+        nav ul li {
+            margin-left: 20px;
+        }
+    
+        .kontakti {
+            padding: 0 5%;
+        }
+    
+        .Ditet {
+            margin-right: 5%;
+        }
+    }
+    
+    @media screen and (max-width: 576px) {
+        nav {
+            padding: 20px 3%;
+        }
+    
+        nav ul li {
+            margin-left: 10px;
+        }
+    
+        .kontakti {
+            padding: 0 3%;
+        }
+    
+        .Ditet {
+            margin-right: 3%;
+        }
+    
+        .teksti {
+            margin-left: 3%;
+        }
+    }
+    @media screen and (max-width: 420px) {
+        nav {
+            padding: 20px 2%;
+        }
+    
+        nav ul li {
+            margin-left: 5px;
+        }
+    
+        .kontakti {
+            padding: 0 2%;
+        }
+    
+        .Ditet {
+            margin-right: 2%;
+        }
+    
+        .teksti {
+            margin-left: 2%;
+        }
+    }
