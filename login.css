@@ -171,3 +171,99 @@ footer{
         float: left;
         
     }
+    @media screen and (max-width: 767px) {
+        nav ul li {
+            margin-left: 20px;
+        }
+    
+        .forma {
+            width: 80%;
+        }
+    
+        .grupi {
+            padding: 3%; 
+        }
+    
+        .teksti-linkut {
+            margin-left: 0; 
+            text-align: center;
+        }
+    
+        footer {
+            padding: 10px;
+        }
+    }
+    
+    @media screen and (min-width: 768px) and (max-width: 1023px) {
+        nav ul li {
+            margin-left: 40px;
+        }
+    
+        .forma {
+            width: 50%;
+        }
+    
+        .grupi {
+            padding: 3%;
+        }
+    
+        .teksti-linkut {
+            margin-left: 0; 
+            text-align: center;
+        }
+    
+        footer {
+            padding: 15px; 
+        }
+    }
+    
+    @media screen and (min-width: 1024px) {
+        nav {
+            padding: 20px 15%;
+        }
+    
+        .forma {
+            width: 420px;
+        }
+    
+        .grupi {
+            flex-direction: row;
+        }
+    
+        .teksti-linkut {
+            margin-left: 11%; 
+            text-align: left; 
+        }
+    
+        footer {
+            padding: 15px;
+        }
+    }
+    
+    @media screen and (min-width: 1200px) {
+        nav ul li {
+            margin-left: 60px;
+        }
+    
+        .forma {
+            width: 500px;
+        }
+    
+        footer {
+            padding: 20px;
+        }
+    }
+    
+    @media screen and (min-width: 1440px) {
+        nav {
+            padding: 20px 20%;
+        }
+    
+        .forma {
+            width: 600px;
+        }
+    
+        footer {
+            padding: 25px;
+        }
+    }
