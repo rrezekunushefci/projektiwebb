@@ -5,5 +5,3 @@ if (isset($_GET['id'])) {
     $myID = $_GET['id'];
     $dhena->DeleteData($myID);
 }
-
-
