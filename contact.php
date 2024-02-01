@@ -1,3 +1,57 @@
+<?php
+class Kontakti
+{
+    private $conn = null;
+    private $host = 'localhost';
+    private $dbname = 'projektiw'; 
+    private $username = 'root';
+    private $password = '';
+
+    public function connectDB()
+    {
+        try {
+            $this->conn = new PDO("mysql:host=$this->host;dbname=$this->dbname", $this->username, $this->password);
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            return $this->conn;
+        } catch (PDOException $pdoe) {
+            die("Nuk mund të lidhej me bazën e të dhënave {$this->dbname} :" . $pdoe->getMessage());
+        }
+    }
+
+    public function insertData($emri, $email, $telefoni, $mesazhi)
+    {
+        try {
+            $sql = "INSERT INTO kontakti (emri, email, telefoni, mesazhi) VALUES (:emri, :email, :telefoni, :mesazhi)";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bindParam(':emri', $emri);
+            $stmt->bindParam(':email', $email);
+            $stmt->bindParam(':telefoni', $telefoni);
+            $stmt->bindParam(':mesazhi', $mesazhi);
+            $stmt->execute();
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+}
+
+$db = new Kontakti();
+$conn = $db->connectDB();
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $Emri = $_POST['Emri'];
+    $Email = $_POST['Email'];
+    $nrtel = $_POST['Phone'];
+    $mesazhi = $_POST['Mesazhhi'];
+
+    if ($db->insertData($Emri, $Email, $nrtel, $mesazhi)) {
+        echo '<script>alert("Mesazhi juaj është dërguar me sukses dhe është ruajtur në bazën e të dhënave. Faleminderit!")</script>';
+    } else {
+        echo '<script>alert("Diçka shkoi gabim. Ju lutem provoni përsëri më vonë.")</script>';
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,3 +87,4 @@
       <script src="contact.js"></script>
 </body>
 </html>
+

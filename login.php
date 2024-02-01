@@ -1,6 +1,8 @@
 <?php
 session_start();
 
+
+
 class Database
 {
     private $host = "localhost";
@@ -54,6 +56,10 @@ class UserAuthentication
                 $_SESSION['user_id'] = $row['user_id'];
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['role'] = $row['role'];
+                
+                if(isset($_POST['username'], $_POST['password'])) 
+                    $username = $_POST['username'];
+                    $password = $_POST['password'];
 
                 if ($row["role"] == "user") {
                     header("Location: userdash.php");
@@ -65,7 +71,7 @@ class UserAuthentication
                     $this->resultMessage = "Invalid role";
                 }
             } else {
-                $this->resultMessage = "Username or password incorrect";
+                $this->resultMessage = "Wrong Credentials";
             }
         }
     }
@@ -120,7 +126,6 @@ class LoginForm
     }
 }
 
-// Usage
 $database = new Database();
 $userAuthentication = new UserAuthentication($database);
 $userAuthentication->authenticate();

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="Register.css">
     <title>Regjistrohu</title>
     <link rel="website icon" href="logo.png" type="png">
+    <script src="register.js"></script>
 </head>
 <body>
 <?php require('inc/header.php'); ?>
@@ -54,6 +55,6 @@
 
         </div>
     </div>
-    <script src="register.js"></script>
+    
 </body>
 </html>

@@ -4,11 +4,10 @@ var email = document.formfill.Email.value;
 var fjalekalimi = document.formfill.Fjalekalimi.value;
 var konfirmimi = document.formfill.Konfirmimi.value;
 
-    if (emri.length) {
-    alert ('Emri duhet te kete se paku gjashte shkronja!');
-    return false;   
-    }
-
+if (emri.length < 6) {
+    alert('Emri duhet të ketë më shumë se gjashtë shkronja!');
+    return false;
+}
  
     var emailRegex = /^\S+@\S+\.\S+$/;
      if (!emailRegex.test(email)) {
@@ -16,10 +15,9 @@ var konfirmimi = document.formfill.Konfirmimi.value;
      return false;
     }
 
-    
-    var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if(!passwordRegex.test(fjalekalimi)) {
-        alert('Fjalëkalimi duhet të ketë së paku 8 karaktere dhe të përmbajë një kombinim të shkronjave (të vogla dhe të mëdha), numrave, dhe karaktereve speciale!')
+    var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+    if (!passwordRegex.test(fjalekalimi)) {
+        alert('Fjalëkalimi duhet të përmbajë të paktën 8 karaktere, duke përfshirë të vogla, të mëdha dhe numra!');
         return false;
     }
 

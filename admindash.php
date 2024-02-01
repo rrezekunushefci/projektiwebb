@@ -5,6 +5,7 @@ require_once('produktet.php');
 $dhenat = new Products();
 $all = $dhenat->ReadData();
 
+
 class AdminPanel
 {
     private $adminName;
@@ -136,13 +137,23 @@ class AdminPanel
                 </div>
                 <i class='bx bx-bell' style='color:#fff'></i>
                 </div>
-                <a href="" class="admin-photo" id="adminPhoto">
-                    <img src="rrezja anesa 1.png" alt="Admin Photo">
-                </a>
-                <div class="dropdown" id="dropdownMenu">
-                    <?php
-                    $this->renderDropdownItems();
-                    ?>
+                <a href="photo_path.png" class="admin-photo" id="adminPhoto">
+                         <?php
+                    
+                            $photo_path = 'projektiwebb/' . $_SESSION['admin_username'] . '.png'; 
+           
+                              if (file_exists($photo_path)) {
+                                 echo '<img src=""' . $photo_path . '" alt="Admin Photo">';
+                                    } else {
+                                  echo '<img src="user.png" alt="Admin Photo" width="70" height="70">'; ;
+                                 } ?>
+                                   </a>
+                                   <div class="dropdown" id="dropdownMenu">
+                                       <?php  
+                                        $this->renderDropdownItems();
+                                              ?>
+                
+
                 </div>
             </nav>
            
@@ -251,8 +262,41 @@ class AdminPanel
                     ?>
                 </table>
             </div>
+            <div id="a1">
+    <table>
+        <hr>
+        <p>USERS DATA LIST</p>
+        <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Created_at</th>
+            <th>Role</th>
+            <th>Email</th>
+        </tr>
 
-            <?php
+        <?php
+        $query = "SELECT id, username, created_at, role, email FROM users";
+        $result = $this->db->query($query);
+
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                ?>
+                <tr>
+                    <td><?php echo $row['id']; ?></td>
+                    <td><?php echo $row['username']; ?></td>
+                    <td><?php echo $row['created_at']; ?></td>
+                    <td><?php echo $row['role']; ?></td>
+                    <td><?php echo $row['email']; ?></td>
+                </tr>
+                <?php
+            }
+        } else {
+            echo "<tr><td colspan='5'>No users found</td></tr>";
+        }
+        ?>
+    </table>
+</div>
+           <?php
     }
 
     private function renderDropdownItems()
@@ -262,16 +306,19 @@ class AdminPanel
             <div class="admin-info">
                 <p class="admin-name">
                     <i class='bx bx-user-check'></i>
-                    <?php echo $this->adminName; ?>
+              
+                    <?php 
+                    session_start();
+                    $_SESSION['admin_username'] = 'username';
+                    echo $_SESSION['admin_name']; ?>
                 </p>
             </div>
-            <a href="#" class="dropdown-item">Switch Account <i class='bx bxs-user-account'></i></a>
-            <a href="#" class="dropdown-item">Change Password <i class='bx bx-lock-alt'></i></a>
-            <a href="login.php" class="dropdown-item">Log out <i class='bx bx-log-out'></i></a>
+            <a href="switch_account.php" class="dropdown-item">Switch Account <i class='bx bxs-user-account'></i></a>
+            <a href="change_password.php" class="dropdown-item">Change Password <i class='bx bx-lock-alt'></i></a>
+            <a href="home.php" class="dropdown-item">Log out <i class='bx bx-log-out'></i></a>
         </div>
         <?php
     }
-
     public function renderFooter()
     {
         $this->db->close();
@@ -286,7 +333,7 @@ class AdminPanel
 $adminPanel = new AdminPanel($all);
 $adminPanel->renderHeader();
 $adminPanel->renderFooter();
-?>   
+?>  
 
 
 
