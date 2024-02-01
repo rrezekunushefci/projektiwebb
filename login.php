@@ -2,6 +2,11 @@
 session_start();
 
 
+$loggedIn = isset($_SESSION['username']);
+$username = $loggedIn ? $_SESSION['username'] : '';
+
+
+
 
 class Database
 {
