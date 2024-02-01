@@ -34,7 +34,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="stylesheet" href="Register.css">
     <title>Regjistrohu</title>
     <link rel="website icon" href="logo.png" type="png">
-</head>
+    <script src="registeer.js"></script>
+    </head>
 
 <body>
     <?php require('inc/header2.php'); ?>
