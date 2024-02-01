@@ -1,219 +1,231 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style: none;
-    scroll-behavior: smooth;
-    font-family: 'Times New Roman', Times, serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+  scroll-behavior: smooth;
+  font-family: "Times New Roman", Times, serif;
 }
-
 
 .homepage {
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    padding: 0 5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  padding: 0 5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-
 .back-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  z-index: -1;
 }
 
 /* Style for navigation */
 nav {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    padding: 20px 5%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px 5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 nav .logo {
-    width: 85px;
+  width: 85px;
 }
 
 nav ul li {
-    list-style: none;
-    display: inline-block;
-    margin-left: 62px;
+  list-style: none;
+  display: inline-block;
+  margin-left: 62px;
 }
 
 nav ul li a {
-    text-decoration: none;
-    color: #666888;
-    font-size: 17px;
+  text-decoration: none;
+  color: #666888;
+  font-size: 17px;
 }
 
 .permbajtja {
-    text-align: center;
-    z-index: 1; 
+  text-align: center;
+  z-index: 1;
 }
 
 .permbajtja h1 {
-    font-size: 70px;
-    color: #fff;
-    font-weight: 600;
-    text-align: center;
-    padding-top: 25%;
-    background: linear-gradient(to right, #ffffff, #666);
-    background-clip: text;
-    color: transparent;
+  font-size: 70px;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 25%;
+  background: linear-gradient(to right, #ffffff, #666);
+  background-clip: text;
+  color: transparent;
 }
 
 .permbajtja a {
-    text-decoration: none;
-    display: inline-block;
-    color: #fff;
-    font-size: 20px;
-    border: 2px solid #fff;
-    padding: 10px 60px;
-    border-radius: 35px;
-    font-weight: 600;
-    box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.3);
-    margin-top: 3%;
+  text-decoration: none;
+  display: inline-block;
+  color: #fff;
+  font-size: 20px;
+  border: 2px solid #fff;
+  padding: 10px 60px;
+  border-radius: 35px;
+  font-weight: 600;
+  box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.3);
+  margin-top: 3%;
 }
-
-
 
 .slider {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    margin-left: 8%;
-    margin-right: 5%;
- 
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  margin-left: 8%;
+  margin-right: 5%;
 }
-.section2  svg{
-    background-color: rgb(108, 142, 186);
-    color: rgb(255, 255, 255);
-    height: 30px;
-    top: 50%;
-    font-size: 1.2rem;
-    width: 30px;
-    position: absolute;
-    cursor: pointer;
-    text-align: center;
-    line-height: 46px;
-    border-radius: 50%;
-    transform: translateY(-50%);
-
+.section2 svg {
+  background-color: rgb(108, 142, 186);
+  color: rgb(255, 255, 255);
+  height: 30px;
+  top: 50%;
+  font-size: 1.2rem;
+  width: 30px;
+  position: absolute;
+  cursor: pointer;
+  text-align: center;
+  line-height: 46px;
+  border-radius: 50%;
+  transform: translateY(-50%);
 }
 
 body {
   overflow-x: hidden;
-      
-    height: 100%;
-    margin: 0;
-    padding: 0;
+
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.section2 {
+  max-width: 1500px;
+  position: relative;
+}
+.section2 svg:first-child {
+  left: 20px;
+}
+.section2 svg:last-child {
+  right: 20px;
+}
+.image {
+  margin: 0px 50px 0px 20px;
+  width: 27%;
+  height: 27%;
+  padding: 10px 18px 18px 18px;
+}
+.txt1 {
+  text-align: center;
+  letter-spacing: 40px;
+  color: rgb(68, 68, 132);
+  margin: 0px 0px 0px 40px;
+}
+.txt2 {
+  text-align: center;
+  letter-spacing: 40px;
+  color: rgb(68, 68, 132);
+  margin: 0px 0px 0px 40px;
+  padding: 0px 0px 5px 0px;
+}
+
+footer {
+  align-items: center;
+  padding: 15px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 1;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  text-align: center;
+
+  box-sizing: border-box;
+}
+
+.dropdown-menu {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-menu a {
+  color: #212529;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f8f9fa;
+}
+
+.dropdown-toggle::after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}
+
+.copyright {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.icons {
+  float: left;
+}
+
+@media screen and (max-width: 768px) {
+  nav ul li {
+    margin-left: 10px;
   }
-  
 
-.section2{
-   
-    max-width: 1500px;
-    position: relative;
-}
-.section2 svg:first-child{
-    left: 20px;
-}
-.section2 svg:last-child{
-    right: 20px;
-}
-.image{
-    margin:0px 50px 0px 20px;
-    width: 27%;
-    height: 27%;
-    padding: 10px 18px 18px 18px;
-}
-.txt1{
-text-align: center;
-letter-spacing: 40px;
-color: rgb(68, 68, 132);
-margin: 0px 0px 0px 40px;
-}
-.txt2{
-    text-align: center;
-    letter-spacing: 40px;
-    color: rgb(68, 68, 132);
-    margin: 0px 0px 0px 40px;
-    padding: 0px 0px 5px 0px;
-    }
+  .permbajtja h1 {
+    font-size: 30px;
+    padding-top: 10%;
+  }
 
-footer{
+  .permbajtja a {
+    font-size: 14px;
+    padding: 6px 20px;
+    margin-top: 1%;
+  }
 
-    align-items: center;
-    padding: 15px;
-    font-weight: bold;
-    position: absolute;
-    bottom:1;
-    left: 0;
+  .image {
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    color: white;
-    text-align: center;
+    margin: 0;
+    padding: 10px;
+  }
 
-    box-sizing: border-box;
-    
-    
-    }
-    
-    
-    .copyright{ 
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    
-    
-    }
-    .icons{
-        float: left;
-        
-    }
+  .txt1,
+  .txt2 {
+    letter-spacing: 20px;
+  }
 
-    @media screen and (max-width: 768px) {
-        nav ul li {
-            margin-left: 10px; 
-        }
-    
-        .permbajtja h1 {
-            font-size: 30px;
-            padding-top: 10%;
-        }
-    
-        .permbajtja a {
-            font-size: 14px;
-            padding: 6px 20px;
-            margin-top: 1%;
-        }
-    
-        .image {
-            width: 100%; 
-            margin: 0;
-            padding: 10px;
-        }
-    
-        .txt1,
-        .txt2 {
-            letter-spacing: 20px;
-        }
-    
-        footer {
-            padding: 10px; 
-        }
-    }
-    
+  footer {
+    padding: 10px;
+  }
+}

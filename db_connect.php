@@ -1,17 +1,17 @@
 <?php
-$host="localhost";
-$user="root";
-$password="";
-$db="projektiw";
+$host = "localhost";
+$user = "root";
+$password = "";
+$db = "projektiw";
 
 
 
 
-$data=mysqli_connect($host, $user, $password, $db);
+$data = mysqli_connect($host, $user, $password, $db);
 
 
 
-if ($data===false) {
+if ($data === false) {
     die("Gabim në lidhje");
 }
-echo "Lidhja u krye me sukses";
+echo "";

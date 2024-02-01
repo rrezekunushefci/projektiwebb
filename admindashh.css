@@ -1,21 +1,18 @@
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    
-
-  }
-
-  .background-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url(ROVINJ\ 1.1.jpeg);
-    filter: blur(4px); 
-    z-index: -1; 
+  margin: 0;
+  font-family: Arial, sans-serif;
 }
 
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(ROVINJ\ 1.1.jpeg);
+  filter: blur(4px);
+  z-index: -1;
+}
 
 .navbar {
   background: linear-gradient(to right, #3498db, #c2528b);

@@ -9,6 +9,8 @@ class Database
     private $db = "projektiw";
     private $connection;
 
+    
+
     public function __construct()
     {
         $this->connection = mysqli_connect($this->host, $this->user, $this->password, $this->db);
@@ -56,7 +58,7 @@ class UserAuthentication
                 $_SESSION['role'] = $row['role'];
 
                 if ($row["role"] == "user") {
-                    header("Location: userdash.php");
+                    header("Location: Home.php");
                     exit();
                 } elseif ($row["role"] == "admin") {
                     header("Location: admindash.php");
@@ -87,13 +89,15 @@ class LoginForm
 
     public function render()
     {
-        require('inc/header.php');
+        require('inc/header2.php');
         ?>
         <div class="permbajtja">
             <div class="forma">
                 <form action="" name="formfill" onsubmit="return validation()" method="post">
                     <h2>Kycu</h2>
-                    <p id="result"><?php echo $this->userAuthentication->getResultMessage(); ?></p>
+                    <p id="result">
+                        <?php echo $this->userAuthentication->getResultMessage(); ?>
+                    </p>
 
                     <div class="inputet">
                         <i class='bx bxs-user'></i>
@@ -114,8 +118,11 @@ class LoginForm
                 </form>
             </div>
         </div>
-        <script src="login.js"></script>
+        <script src="loginn.js"></script>
         <link rel="stylesheet" href="login.css">
+        <link rel="website icon" href="logo.png" type="png">
+        <title>Log In</title>
+        
         <?php require('inc/footer.php');
     }
 }
@@ -128,6 +135,3 @@ $userAuthentication->authenticate();
 $loginForm = new LoginForm($userAuthentication);
 $loginForm->render();
 ?>
-
-
-

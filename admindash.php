@@ -119,16 +119,16 @@ class AdminPanel
         </head>
 
         <body>
-        <div class="background-container">
-       
-    </div>
+            <div class="background-container">
+
+            </div>
             <nav class="navbar">
                 <img src="logo.png" class="logo">
                 <div class="navbar-links">
-                    <a href="#" class="nav-link">Dashboard Overview</a>
-                    <a href="#" class="nav-link">Analytics</a>
-                    <a href="#" class="nav-link">Reports</a>
-                    <a href="#" class="nav-link">Users/Management</a>
+                    <a href="Home.php" class="nav-link">HOME</a>
+                    <a href="Tour.php" class="nav-link">TOURS</a>
+                    <a href="aboutus.php" class="nav-link">ABOUT US</a>
+                    <a href="contact.php" class="nav-link">CONTACT US</a>
                     <a href="#" class="nav-link">Help/Support</a>
                 </div>
                 <div class="search-bar">
@@ -145,11 +145,11 @@ class AdminPanel
                     ?>
                 </div>
             </nav>
-           
-    </div>
-   <br>
-   <br>
-    </div>
+
+            </div>
+            <br>
+            <br>
+            </div>
             <div class="dashboard">
 
                 <div class="card">
@@ -209,10 +209,10 @@ class AdminPanel
             <br>
 
 
-        
+
             <div id="a1">
                 <header>
-                    
+
                     <a href="insert.php"><Button id='r'>INSERT</Button></a>
                 </header>
                 <table>
@@ -258,18 +258,18 @@ class AdminPanel
     private function renderDropdownItems()
     {
         ?>
-        <div class="dropdown-content">
-            <div class="admin-info">
-                <p class="admin-name">
-                    <i class='bx bx-user-check'></i>
-                    <?php echo $this->adminName; ?>
-                </p>
+            <div class="dropdown-content">
+                <div class="admin-info">
+                    <p class="admin-name">
+                        <i class='bx bx-user-check'></i>
+                        <?php echo $this->adminName; ?>
+                    </p>
+                </div>
+                <a href="#" class="dropdown-item">Switch Account <i class='bx bxs-user-account'></i></a>
+                <a href="#" class="dropdown-item">Change Password <i class='bx bx-lock-alt'></i></a>
+                <a href="login.php" class="dropdown-item">Log out <i class='bx bx-log-out'></i></a>
             </div>
-            <a href="#" class="dropdown-item">Switch Account <i class='bx bxs-user-account'></i></a>
-            <a href="#" class="dropdown-item">Change Password <i class='bx bx-lock-alt'></i></a>
-            <a href="login.php" class="dropdown-item">Log out <i class='bx bx-log-out'></i></a>
-        </div>
-        <?php
+            <?php
     }
 
     public function renderFooter()
@@ -286,7 +286,4 @@ class AdminPanel
 $adminPanel = new AdminPanel($all);
 $adminPanel->renderHeader();
 $adminPanel->renderFooter();
-?>   
-
-
-
+?>
