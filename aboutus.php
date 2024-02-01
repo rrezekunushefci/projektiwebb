@@ -30,7 +30,8 @@ $username = $loggedIn ? $_SESSION['username'] : '';
                     <br> për udhëtimet në vendet e Mesdheut.
                     Ne jemi këtu për t'ju udhëzuar
                     <br>dhe për t'ju ofruar informacionin më të fundit dhe të detajuar
-                    <br>mbi destinacionet e bukura të kësaj pjese perlë të botes!</p>
+                    <br>mbi destinacionet e bukura të kësaj pjese perlë të botes!
+                </p>
                 <br>
                 <h3>MISIONI YNE</h3>
                 <br>
@@ -47,7 +48,8 @@ $username = $loggedIn ? $_SESSION['username'] : '';
                 <p>Ne ofrojmë Guide te personalizuar, ndihmë 24/7,
                     paketa të personalizuara, <br> blog dhe resurse edukative; Informacione dhe këshilla për udhëtimin
                     tuaj,
-                    <br> duke iu siguruar autenticitet dhe cilësi në çdo shërbim.</p>
+                    <br> duke iu siguruar autenticitet dhe cilësi në çdo shërbim.
+                </p>
             </div>
             <div class="Ditet">
                 <table>
@@ -92,7 +94,3 @@ $username = $loggedIn ? $_SESSION['username'] : '';
 </body>
 
 </html>
-
-
-
-
