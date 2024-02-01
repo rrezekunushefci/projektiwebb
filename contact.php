@@ -1,14 +1,4 @@
-<?php
-session_start();
-
-if (isset($_SESSION['username'])) {
-    $loggedIn = true;
-    $username = $_SESSION['username'];
-} else {
-    $loggedIn = false;
-}
-?>
-
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -75,3 +65,4 @@ if (isset($_SESSION['username'])) {
 </body>
 
 </html>
+
