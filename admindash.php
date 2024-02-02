@@ -126,32 +126,31 @@ class AdminPanel
             <nav class="navbar">
                 <img src="logo.png" class="logo">
                 <div class="navbar-links">
-                    <a href="Home.php" class="nav-link">HOME</a>
-                    <a href="Tour.php" class="nav-link">TOURS</a>
-                    <a href="aboutus.php" class="nav-link">ABOUT US</a>
-                    <a href="contact.php" class="nav-link">CONTACT US</a>
-                    <a href="#" class="nav-link">Help/Support</a>
+                    <a href="Home.php" class="nav-link">TOURS</a>
+                    <a href="Tour.php" class="nav-link">BOOKINGS</a>
+                    <a href="aboutus.php" class="nav-link">CONTACT/MESSAGES</a>
+                   
                 </div>
                 <div class="search-bar">
                     <input type="text" placeholder="Search...">
                 </div>
                 <i class='bx bx-bell' style='color:#fff'></i>
                 </div>
-                <a href="photo_path.png" class="admin-photo" id="adminPhoto">
-                         <?php
-                    
-                            $photo_path = 'projektiwebb/' . $_SESSION['admin_username'] . '.png'; 
-           
-                              if (file_exists($photo_path)) {
-                                 echo '<img src=""' . $photo_path . '" alt="Admin Photo">';
-                                    } else {
-                                  echo '<img src="user.png" alt="Admin Photo" width="70" height="70">'; ;
-                                 } ?>
-                                   </a>
-                                   <div class="dropdown" id="dropdownMenu">
-                                       <?php  
-                                        $this->renderDropdownItems();
-                                              ?>
+                <a href="#" class="admin-photo" id="adminPhoto">
+    <?php
+    $photo_path = 'projektiwebb/' . $_SESSION['admin_username'] . '.png';
+    if (file_exists($photo_path)) {
+        echo '<img src="' . $photo_path . '" alt="Admin Photo">';
+    } else {
+        echo '<img src="user.png" alt="Admin Photo" width="70" height="70">';
+    }
+    ?>
+</a>
+<div class="dropdown" id="dropdownMenu">
+    <?php  
+    $this->renderDropdownItems();
+    ?>
+</div>
                 
 
                 </div>
@@ -308,13 +307,14 @@ class AdminPanel
                     <i class='bx bx-user-check'></i>
                     <?php echo $this->adminName; ?>
                 </p>
+                <a href="#" class="dropdown-item">Switch Account <i class='bx bxs-user-account'></i></a>
+                <a href="#" class="dropdown-item">Change Password <i class='bx bx-lock-alt'></i></a>
+                <a href="logout.php" class="dropdown-item">Log out <i class='bx bx-log-out'></i></a>
             </div>
-            <a href="#" class="dropdown-item">Switch Account <i class='bx bxs-user-account'></i></a>
-            <a href="#" class="dropdown-item">Change Password <i class='bx bx-lock-alt'></i></a>
-            <a href="login.php" class="dropdown-item">Log out <i class='bx bx-log-out'></i></a>
         </div>
         <?php
     }
+    
     public function renderFooter()
     {
         $this->db->close();
@@ -329,7 +329,4 @@ class AdminPanel
 $adminPanel = new AdminPanel($all);
 $adminPanel->renderHeader();
 $adminPanel->renderFooter();
-?>   
-
-
-
+?>  
