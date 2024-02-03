@@ -1,96 +1,128 @@
 <?php
 session_start();
-$loggedIn = isset($_SESSION['username']);
-$username = $loggedIn ? $_SESSION['username'] : '';
+$loggedIn = isset($_SESSION['username']) ? $_SESSION['username'] : '';
+
+$host = "localhost";
+$user = "root";
+$password = "";
+$dbname = "projektiw";
+
+try {
+    $db = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+}
+
+class SessionManager
+{
+    public static function getUsername()
+    {
+        return isset($_SESSION['username']) ? $_SESSION['username'] : '';
+    }
+}
+
+class AboutUsPage
+{
+    private $username;
+    private $db;
+
+    public function __construct($db)
+    {
+        $this->username = SessionManager::getUsername();
+        $this->db = $db;
+    }
+
+    public function generatePage()
+    {
+        ?>
+        <!DOCTYPE html>
+        <html lang="en">
+
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>About Us</title>
+            <link rel="stylesheet" href="aboutusss.css">
+
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        </head>
+
+        <body>
+            <div class="container">
+                <?php
+
+                $loggedIn = isset($_SESSION['username']) ? $_SESSION['username'] : '';
+                ?>
+
+                <nav>
+                    <img src="logo.png" class="logo">
+                    <ul>
+                        <li><a href="Home.php">HOME</a></li>
+                        <li><a href="Tour.php">TOURS</a></li>
+                        <li><a href="contact.php">CONTACT</a></li>
+                        <li><a href="aboutus.php">ABOUT US</a></li>
+
+                        <?php if ($loggedIn): ?>
+                            <li class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" id="userDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <?php echo $this->username; ?>
+                                    <div class="dropdown-menu" aria-labelledby="userDropdown">
+                                        <a class="dropdown-item" href="my_bag.php">My Bag</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="logout.php">Logout</a>
+                                    </div>
+                            </li>
+                        <?php else: ?>
+                            <li><a href="login.php">LOGIN</a></li>
+                        <?php endif; ?>
+                    </ul>
+                </nav>
+
+                <div class="kontakti">
+                    <div class="teksti">
+
+                        <?php
+
+                        $statement = $this->db->query("SELECT * FROM about_us_content");
+                        $about_us_content = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+
+                        foreach ($about_us_content as $row) {
+                            echo '<h3><b>' . $row['title'] . '</b></h3>';
+                            echo '<p>' . $row['description'] . '</p>';
+                        }
+                        ?>
+                    </div>
+                    <div class="Ditet">
+
+                        <?php
+
+                        $statement = $this->db->query("SELECT * FROM working_hours");
+                        $working_hours = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+
+                        echo '<table>';
+                        echo '<tr><th>DITET E PUNES</th><th>ORARI</th></tr>';
+                        foreach ($working_hours as $row) {
+                            echo '<tr><td>' . $row['day'] . '</td><td>' . $row['hours'] . '</td></tr>';
+                        }
+                        echo '</table>';
+                        ?>
+                    </div>
+                </div>
+            </div>
+
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        </body>
+
+        </html>
+        <?php
+    }
+}
+
+$page = new AboutUsPage($db);
+$page->generatePage();
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us</title>
-    <link rel="stylesheet" href="aboutuss.css">
-    <link rel="icon" href="logo.png" type="image/png">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
-</head>
-
-<body>
-    <div class="container">
-        <?php require('inc/header.php'); ?>
-
-        <div class="kontakti">
-            <div class="teksti">
-                <h3><b>RRETH NESH</b></h3>
-                <br>
-                <p><a href="Home.php"><b>Discover Mediterranean</b></a> është një udhërrëfyes i specializuar
-                    <br> dhe një burim i vlefshëm për të gjithë ata që janë të apasionuar
-                    <br> për udhëtimet në vendet e Mesdheut.
-                    Ne jemi këtu për t'ju udhëzuar
-                    <br>dhe për t'ju ofruar informacionin më të fundit dhe të detajuar
-                    <br>mbi destinacionet e bukura të kësaj pjese perlë të botes!
-                </p>
-                <br>
-                <h3>MISIONI YNE</h3>
-                <br>
-                <p>
-                    Misioni ynë është të krijojmë përvoja të mrekullueshme udhëtimi,
-                    <br> për të përcjellë pasionin tonë për kulturën, historinë, ushqimin,
-                    <br> dhe pamjet e mahnitshme të Mesdheut nëpërmjet guidave tona të specializuara.
-                    <br> <br>Synojmë të jemi burimi juaj i besueshëm për këtë rajon të pasur në histori dhe bukuri
-                    natyrore!
-                </p>
-                <br>
-                <h3>CFARE OFROJME NE?</h3>
-                <br>
-                <p>Ne ofrojmë Guide te personalizuar, ndihmë 24/7,
-                    paketa të personalizuara, <br> blog dhe resurse edukative; Informacione dhe këshilla për udhëtimin
-                    tuaj,
-                    <br> duke iu siguruar autenticitet dhe cilësi në çdo shërbim.
-                </p>
-            </div>
-            <div class="Ditet">
-                <table>
-                    <tr>
-                        <th>DITET E PUNES</th>
-                        <th>ORARI</th>
-                    </tr>
-                    <tr>
-                        <td>E hene</td>
-                        <td>9AM-7PM</td>
-                    </tr>
-                    <tr>
-                        <td>E marte</td>
-                        <td>9AM-9PM</td>
-                    </tr>
-                    <tr>
-                        <td>E merkure</td>
-                        <td>10AM-8PM</td>
-                    </tr>
-                    <tr>
-                        <td>E enjte</td>
-                        <td>9AM-4PM</td>
-                    </tr>
-                    <tr>
-                        <td>E premte</td>
-                        <td>12AM-7PM</td>
-                    </tr>
-                    <tr>
-                        <td>E shtune</td>
-                        <td>10AM-5PM</td>
-                    </tr>
-                    <tr>
-                        <td>E diele</td>
-                        <td><span style="color: rgb(145, 0, 0)">MBYLLUR</span></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <?php require('inc/footer.php'); ?>
-</body>
-
-</html>
