@@ -17,7 +17,8 @@ class users extends dbConnect
         $created_at = '',
         $role = '',
         $email = '',
-    ) {
+    )
+     {
         $this->id = $id;
         $this->username = $username;
         $this->password = $password;

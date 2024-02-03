@@ -15,10 +15,11 @@ function validation() {
     }
 
   
-    var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+    var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     if (!passwordRegex.test(fjalekalimi)) {
-        alert('Fjalëkalimi duhet të përmbajë të paktën 8 karaktere, duke përfshirë të vogla, të mëdha dhe numra!');
+        alert('Fjalëkalimi duhet të ketë së paku 8 karaktere dhe të përmbajë një kombinim të shkronjave (të vogla dhe të mëdha), numrave, dhe karaktereve speciale!');
         return false;
+    }
 
     
     return true;

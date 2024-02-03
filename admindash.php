@@ -5,24 +5,39 @@ require_once('produktet.php');
 $dhenat = new Products();
 $all = $dhenat->ReadData();
 
+
 class AdminPanel
 {
     private $adminName;
     private $db;
     private $all;
 
-
     public function __construct($all)
-{
-    $this->db = new mysqli('localhost', 'root', '', 'projektiw');
+    {
+        $this->db = new mysqli('localhost', 'root', '', 'projektiw');
 
-    if ($this->db->connect_error) {
-        die("Connection failed: " . $this->db->connect_error);
+        if ($this->db->connect_error) {
+            die("Connection failed: " . $this->db->connect_error);
+        }
+
+        $adminQuery = "SELECT username FROM users WHERE role = 'admin' LIMIT 1";
+        $result = $this->db->query($adminQuery);
+
+        if ($result && $result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $this->adminName = $row['username'];
+        } else {
+            $this->adminName = "Anesa Bl"; // 
+        }
+        if (isset($_SESSION['username'])) {
+            $this->adminName = $_SESSION['username'];
+        } else {
+            $this->adminName = "Anesa Bl"; // 
+        }
+
+
+        $this->all = $all;
     }
-  
-    $this->all = $all; // Set the $all property
-}
-
     private function getUsersStatistics()
     {
         $totalUsersQuery = "SELECT COUNT(id) as total_users FROM users";
@@ -35,7 +50,7 @@ class AdminPanel
             $totalUsers = 0;
         }
 
-        $recentlyAddedUsersQuery = "SELECT id, username, DATE(created_at) as created_at FROM users ORDER BY created_at DESC LIMIT 3";
+        $recentlyAddedUsersQuery = "SELECT id, username, DATE(created_at) as created_at FROM users ORDER BY created_at DESC LIMIT 5";
         $result = $this->db->query($recentlyAddedUsersQuery);
 
         if ($result) {
@@ -84,17 +99,35 @@ class AdminPanel
     }
 
 
+
     private function getAdminUserActivity()
     {
-        $userActivity = ['Activity 1', 'Activity 2', 'Activity 3'];
+        $activityQuery = "SELECT p.name AS product_name, p.modified_at AS last_modified, u.username AS admin_username
+        FROM products p
+        JOIN users u ON p.last_modified_by = u.id
+        ORDER BY p.modified_at DESC
+        LIMIT 5";
+    
+        $result = $this->db->query($activityQuery);
+    
+        $userActivity = [];
+    
+        if ($result && $result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $userActivity[] = $row;
+            }
+        }
+    
         return $userActivity;
     }
+    
 
     public function renderHeader()
     {
         ?>
         <!DOCTYPE html>
         <html lang="en">
+
 
         <head>
             <meta charset="UTF-8">
@@ -109,9 +142,9 @@ class AdminPanel
         </head>
 
         <body>
-        <div class="background-container">
-       
-    </div>
+            <div class="background-container">
+
+            </div>
             <nav class="navbar">
                 <img src="logo.png" class="logo">
                 <div class="navbar-links">
@@ -119,42 +152,25 @@ class AdminPanel
                     <a href="rezervimet.php" class="nav-link">BOOKINGS</a>
                     <a href="kontaktet.php" class="nav-link">CONTACTS/MESSAGE</a>
                 </div>
-                <div class="search-bar">
-                    <input type="text" placeholder="Search...">
-                </div>
-                <i class='bx bx-bell' style='color:#fff'></i>
-                </div>
-                <a href="#" class="admin-photo" id="adminPhoto">
-                         <?php
-                    
-                            $photo_path = 'projektiwebb/' . $_SESSION['admin_name'] . '.png'; 
-           
-                              if (file_exists($photo_path)) {
-                                 echo '<img src="' . $photo_path . '" alt="Admin Photo">';
-                                    } else {
-                                  echo '<img src="user.png" alt="Admin Photo" width="70" height="70">'; ;
-                                 } ?>
-                                   </a>
-                                   <div class="dropdown" id="dropdownMenu">
-                                       <?php  
-                                        $this->renderDropdownItems();
-                                              ?>
-                
-
-                </div>
+                <a href="" class="admin-photo" id="adminPhoto">
+                    <img src="anesa.png" alt="Admin Photo">
+                    <div class="dropdown" id="dropdownMenu">
+                        <?php
+                        $this->renderDropdownItems();
+                        ?>
+                    </div>
             </nav>
-           
-    </div>
-   <br>
-   <br>
-    </div>
+
+            </div>
+            <br>
+            <br>
+            </div>
             <div class="dashboard">
 
                 <div class="card">
                     <h3>TOTAL USERS</h3>
                     <p>
-                        <?php echo $this->getUsersStatistics()['totalUsers']; 
-                        ?>
+                        <?php echo $this->getUsersStatistics()['totalUsers']; ?>
                     </p>
                     <h3>Recently Added</h3>
                     <ul>
@@ -181,17 +197,23 @@ class AdminPanel
                         <?php endforeach; ?>
                     </ul>
                 </div>
-            
+
                 <div class="card">
-                    <h3> User Activity</h3>
+                    <h3>User Activity</h3>
                     <ul>
                         <?php foreach ($this->getAdminUserActivity() as $activity): ?>
                             <li>
-                                <?php echo $activity; ?>
-                            </li>
+    <?php echo $activity['admin_username']; ?> modified
+    <?php echo $activity['product_name']; ?> on
+    <?php echo $activity['last_modified']; ?>
+</li>
+
                         <?php endforeach; ?>
                     </ul>
                 </div>
+
+
+
             </div>
             <br>
             <br>
@@ -199,10 +221,10 @@ class AdminPanel
             <br>
 
 
-        
+
             <div id="a1">
                 <header>
-                    
+
                     <a href="insert.php"><Button id='r'>INSERT</Button></a>
                 </header>
                 <table>
@@ -242,63 +264,72 @@ class AdminPanel
                 </table>
             </div>
             <div id="a1">
-    <table>
-        <hr>
-        <p>USERS DATA LIST</p>
-        <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Created_at</th>
-            <th>Role</th>
-            <th>Email</th>
-            <th>Action</th>
-        </tr>
+                <table>
+                    <hr>
+                    <p>USERS DATA LIST</p>
+                    <tr>
+                        <th>ID</th>
+                        <th>Username</th>
+                        <th>Created_at</th>
+                        <th>Role</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
 
-        <?php
-        $query = "SELECT id, username, created_at, role, email FROM users";
-        $result = $this->db->query($query);
+                    <?php
+                    $query = "SELECT id, username, created_at, role, email FROM users";
+                    $result = $this->db->query($query);
 
-        if ($result && $result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                ?>
-                <tr>
-                    <td><?php echo $row['id']; ?></td>
-                    <td><?php echo $row['username']; ?></td>
-                    <td><?php echo $row['created_at']; ?></td>
-                    <td><?php echo $row['role']; ?></td>
-                    <td><?php echo $row['email']; ?></td>
-                    <td id='de'><a href="deleteu.php?id=<?php echo $value['id'] ?>"><button id="d">DELETE</button></a>
-                                <a href="editu.php?id=<?php echo $value['id'] ?>"><button id='e'>EDIT</button></a>
-                            </td>
-                </tr>
-                <?php
-            }
-        } else {
-            echo "<tr><td colspan='5'>No users found</td></tr>";
-        }
-        ?>
-    </table>
-</div>
-           <?php
+                    if ($result && $result->num_rows > 0) {
+                        while ($row = $result->fetch_assoc()) {
+                            ?>
+                            <tr>
+                                <td>
+                                    <?php echo $row['id']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['username']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['created_at']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['role']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $row['email']; ?>
+                                </td>
+                                <td id='de'><a href="deleteu.php?id=<?php echo $value['id'] ?>"><button id="d">DELETE</button></a>
+                                    <a href="editu.php?id=<?php echo $value['id'] ?>"><button id='e'>EDIT</button></a>
+                                </td>
+                            </tr>
+                            <?php
+                        }
+                    } else {
+                        echo "<tr><td colspan='5'>No users found</td></tr>";
+                    }
+                    ?>
+                </table>
+            </div>
+
+            <?php
     }
 
     private function renderDropdownItems()
     {
         ?>
-         <div class="dropdown-content">
-        <div class="admin-info">
-            <p class="admin-name">
-                <i class='bx bx-user-check'></i>
-                <?php echo $_SESSION['admin_name']; ?>
-            </p>
+            <div class="dropdown-content">
+                <div class="admin-info">
+                    <p class="admin-name">
+                        <i class='bx bx-user-check'></i>
+                        <?php echo $this->adminName; ?>
+                    </p>
+                </div>
+
+                <a href="change_password.php" class="dropdown-item">Change Password <i class='bx bx-lock-alt'></i></a>
+                <a href="login.php" class="dropdown-item">Log out <i class='bx bx-log-out'></i></a>
             </div>
-            <a href="switch_account.php" class="dropdown-item">Switch Account <i class='bx bxs-user-account'></i></a>
-            <a href="change_password.php" class="dropdown-item">Change Password <i class='bx bx-lock-alt'></i></a>
-            <a href="login.php" class="dropdown-item">Log out <i class='bx bx-log-out'></i></a>
-            <p class="admin-name">
-    
-        </div>
-        <?php
+            <?php
     }
 
     public function renderFooter()
@@ -315,7 +346,4 @@ class AdminPanel
 $adminPanel = new AdminPanel($all);
 $adminPanel->renderHeader();
 $adminPanel->renderFooter();
-?>   
-
-
-
+?>
